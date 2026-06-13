@@ -1,31 +1,13 @@
-name: MLflow CI
+name: heart-disease-env
 
-on:
-  push:
-    branches:
-      - main
+channels:
+  - conda-forge
 
-jobs:
-  train-model:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v4
-
-    - name: Setup Miniconda
-      uses: conda-incubator/setup-miniconda@v3
-      with:
-        auto-activate-base: true
-        python-version: 3.12
-
-    - name: Install MLflow
-      shell: bash -l {0}
-      run: |
-        pip install mlflow==2.19.0
-
-    - name: Run MLflow Project
-      shell: bash -l {0}
-      run: |
-        cd MLProject
-        mlflow run .
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - mlflow==2.19.0
+      - pandas
+      - scikit-learn==1.5.2
+      - numpy
