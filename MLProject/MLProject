@@ -1,0 +1,5 @@
+name: heart_disease_project
+
+entry_points:
+  main:
+    command: "python modelling.py"
